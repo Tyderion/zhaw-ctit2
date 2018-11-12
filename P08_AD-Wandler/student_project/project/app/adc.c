@@ -43,6 +43,8 @@
 /// STUDENTS: To be programmed
 #define ADC_CR2_ADON  (0x1 << 0u) // ON/ OFF Bit
 #define ADC_CR2_START (0x1 << 30u)
+#define ADC_SQR2_CHANNEL4 (4u << 0u)
+#define ADC_SQR0_1CHANNEL (0x0 << 20u)
 
 #define ADC_SR_EOC    (0x1 << 1u)
 /// END: To be programmed
@@ -73,8 +75,8 @@ void adc_init(void)
     /// STUDENTS: To be programmed
 
 
-    ADC3->SQR[2] |= (4u << 0u);                 /* Channel 4 first in conversion sequence (SQ1). */
-    ADC3->SQR[0] |= (0x0 << 20u);               /* Set L to 0 -> only 1 channel (SQ1) in sequence. */
+    ADC3->SQR[2] |= ADC_SQR2_CHANNEL4;                 /* Channel 4 first in conversion sequence (SQ1). */
+    ADC3->SQR[0] |= ADC_SQR0_1CHANNEL;               /* Set L to 0 -> only 1 channel (SQ1) in sequence. */
 
     /// END: To be programmed
 }
